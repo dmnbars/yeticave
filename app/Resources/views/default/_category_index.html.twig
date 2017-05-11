@@ -1,0 +1,7 @@
+<ul class="promo__list">
+    {% for category in categories %}
+        <li class="promo__item promo__item--{{ category.slug }}">
+            <a class="promo__link" href="{{ path('lot_category') }}">{{ category.name }}</a>
+        </li>
+    {% endfor %}
+</ul>

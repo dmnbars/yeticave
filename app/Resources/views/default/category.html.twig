@@ -4,7 +4,7 @@
 
 {% block main %}
     <main>
-        {{ include('default/_category_menu.html.twig') }}
+        {{ render(controller('AppBundle:Default:categoryMenu')) }}
         <div class="container">
             <section class="lots">
                 <h2>Все лоты в категории <span>«Доски и лыжи»</span></h2>

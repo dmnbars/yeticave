@@ -13,7 +13,12 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
-        return $this->render('default/index.html.twig');
+        $categories = $this->getDoctrine()->getRepository('AppBundle:Category')->findAll();
+
+        return $this->render(
+            'default/index.html.twig',
+            ['categories' => $categories]
+        );
     }
 
     /**
@@ -30,5 +35,12 @@ class DefaultController extends Controller
     public function categoryAction(Request $request)
     {
         return $this->render('default/category.html.twig');
+    }
+
+    public function categoryMenuAction()
+    {
+        $categories = $this->getDoctrine()->getRepository('AppBundle:Category')->findAll();
+
+        return $this->render('default/_category_menu.html.twig', ['categories' => $categories]);
     }
 }
