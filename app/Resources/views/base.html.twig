@@ -28,7 +28,7 @@
                                 <img src="{{ asset('img/user.jpg') }}" width="40" height="40" alt="Пользователь">
                             </div>
                             <div class="user-menu__logged">
-                                <p>{{ app.user.username }}</p>
+                                <p>{{ app.user.name }}</p>
                                 <a href="{{ path('fos_user_security_logout') }}">Выйти</a>
                             </div>
                         {% else %}
