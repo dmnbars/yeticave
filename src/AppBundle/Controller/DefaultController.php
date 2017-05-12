@@ -30,6 +30,14 @@ class DefaultController extends Controller
     }
 
     /**
+     * @Route("/lot/add", name="lot_add")
+     */
+    public function lotAddAction(Request $request)
+    {
+        return $this->render('default/lot_add.html.twig');
+    }
+
+    /**
      * @Route("/category", name="lot_category")
      */
     public function categoryAction(Request $request)
