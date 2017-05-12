@@ -53,17 +53,4 @@ class AvatarUploadListener
         $fileName = $this->uploader->upload($file);
         $entity->setAvatar($fileName);
     }
-
-    public function postLoad(LifecycleEventArgs $args)
-    {
-        $entity = $args->getEntity();
-
-        if (!$entity instanceof User) {
-            return;
-        }
-
-        if ($fileName = $entity->getAvatar()) {
-            $entity->setAvatar(new File($this->uploader->getTargetDir() . '/' . $fileName));
-        }
-    }
 }
