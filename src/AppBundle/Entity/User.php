@@ -49,6 +49,16 @@ class User extends BaseUser
     protected $avatar;
 
     /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Lot", mappedBy="user")
+     */
+    private $lots;
+
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Lot", mappedBy="winner")
+     */
+    private $win_lots;
+
+    /**
      * Set name
      *
      * @param string $name
@@ -130,5 +140,73 @@ class User extends BaseUser
     public function getAvatar()
     {
         return $this->avatar;
+    }
+
+    /**
+     * Add lot
+     *
+     * @param \AppBundle\Entity\Lot $lot
+     *
+     * @return User
+     */
+    public function addLot(\AppBundle\Entity\Lot $lot)
+    {
+        $this->lots[] = $lot;
+
+        return $this;
+    }
+
+    /**
+     * Remove lot
+     *
+     * @param \AppBundle\Entity\Lot $lot
+     */
+    public function removeLot(\AppBundle\Entity\Lot $lot)
+    {
+        $this->lots->removeElement($lot);
+    }
+
+    /**
+     * Get lots
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getLots()
+    {
+        return $this->lots;
+    }
+
+    /**
+     * Add winLot
+     *
+     * @param \AppBundle\Entity\Lot $winLot
+     *
+     * @return User
+     */
+    public function addWinLot(\AppBundle\Entity\Lot $winLot)
+    {
+        $this->win_lots[] = $winLot;
+
+        return $this;
+    }
+
+    /**
+     * Remove winLot
+     *
+     * @param \AppBundle\Entity\Lot $winLot
+     */
+    public function removeWinLot(\AppBundle\Entity\Lot $winLot)
+    {
+        $this->win_lots->removeElement($winLot);
+    }
+
+    /**
+     * Get winLots
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getWinLots()
+    {
+        return $this->win_lots;
     }
 }

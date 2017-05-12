@@ -35,6 +35,10 @@ class Category
      */
     private $slug;
 
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Lot", mappedBy="category")
+     */
+    private $lots;
 
     /**
      * Get id
@@ -92,5 +96,46 @@ class Category
     public function getSlug()
     {
         return $this->slug;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->lots = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add lot
+     *
+     * @param \AppBundle\Entity\Lot $lot
+     *
+     * @return Category
+     */
+    public function addLot(\AppBundle\Entity\Lot $lot)
+    {
+        $this->lots[] = $lot;
+
+        return $this;
+    }
+
+    /**
+     * Remove lot
+     *
+     * @param \AppBundle\Entity\Lot $lot
+     */
+    public function removeLot(\AppBundle\Entity\Lot $lot)
+    {
+        $this->lots->removeElement($lot);
+    }
+
+    /**
+     * Get lots
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getLots()
+    {
+        return $this->lots;
     }
 }
