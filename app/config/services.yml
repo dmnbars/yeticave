@@ -5,3 +5,16 @@ services:
         class: AppBundle\Form\RegistrationType
         tags:
             - { name: form.type, alias: app_user_registration }
+
+    app.avatar_uploader:
+        class: AppBundle\FileUploader
+        arguments: ['%avatar_directory%']
+
+
+    app.doctrine_avatar_listener:
+        class: AppBundle\EventListener\AvatarUploadListener
+        arguments: ['@app.avatar_uploader']
+        tags:
+            - { name: doctrine.event_listener, event: prePersist }
+            - { name: doctrine.event_listener, event: preUpdate }
+            - { name: doctrine.event_listener, event: postLoad }

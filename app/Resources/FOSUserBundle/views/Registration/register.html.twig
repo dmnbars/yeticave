@@ -19,7 +19,8 @@
         {{ form_row(form.email, {'label': 'E-mail*', 'attr': {'placeholder': 'Введите e-mail'}}) }}
         {{ form_row(form.plainPassword, {'label': 'Пароль*', 'attr': {'placeholder': 'Введите пароль'}}) }}
         {{ form_row(form.name, {'label': 'Имя*', 'attr': {'placeholder': 'Введите имя'}}) }}
-        {{ form_row(form.contactDetails, {'label': 'Контактные данные*', 'attr': {'placeholder': 'Напишите как с Вами связаться', 'class': 'form__item--last'}}) }}
+        {{ form_row(form.contactDetails, {'label': 'Контактные данные*', 'attr': {'placeholder': 'Напишите как с Вами связаться'}}) }}
+        {{ form_row(form.avatar, {'attr': {'class': 'form__item--last'}}) }}
 
         <button type="submit" class="button">Зарегистрироваться</button>
         <a class="text-link" href="{{ path('fos_user_security_login') }}">Уже есть аккаунт</a>

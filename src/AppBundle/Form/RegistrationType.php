@@ -4,6 +4,7 @@ namespace AppBundle\Form;
 
 use FOS\UserBundle\Form\Type\RegistrationFormType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\FormBuilderInterface;
 
@@ -17,7 +18,8 @@ class RegistrationType extends AbstractType
             ->add('contactDetails')
             ->remove('username')
             ->remove('plainPassword')
-            ->add('plainPassword', PasswordType::class);
+            ->add('plainPassword', PasswordType::class)
+            ->add('avatar', FileType::class, ['label' => 'Изображение']);
     }
 
     public function getParent()

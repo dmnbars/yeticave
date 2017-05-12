@@ -41,6 +41,14 @@ class User extends BaseUser
     protected $contactDetails;
 
     /**
+     * @ORM\Column(type="string")
+     *
+     * @Assert\NotBlank(message="Пожалуйста, добавьте аватар (в формате jpg).")
+     * @Assert\File(mimeTypes={"image/jpeg"})
+     */
+    protected $avatar;
+
+    /**
      * Set name
      *
      * @param string $name
@@ -98,5 +106,29 @@ class User extends BaseUser
     public function getContactDetails()
     {
         return $this->contactDetails;
+    }
+
+    /**
+     * Set avatar
+     *
+     * @param string $avatar
+     *
+     * @return User
+     */
+    public function setAvatar($avatar)
+    {
+        $this->avatar = $avatar;
+
+        return $this;
+    }
+
+    /**
+     * Get avatar
+     *
+     * @return string
+     */
+    public function getAvatar()
+    {
+        return $this->avatar;
     }
 }
