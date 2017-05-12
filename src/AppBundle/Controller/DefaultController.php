@@ -40,6 +40,21 @@ class DefaultController extends Controller
 
         $form = $this->createForm(LotType::class, $lot);
 
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $lot->setUser($this->getUser());
+            $lot->setDateCreate(new \DateTime());
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($lot);
+            $em->flush();
+
+            return $this->redirect($this->generateUrl(
+                'lot_detail'
+            ));
+        }
+
         return $this->render(
             'default/lot_add.html.twig',
             ['form' => $form->createView()]
