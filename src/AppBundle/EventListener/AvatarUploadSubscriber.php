@@ -10,18 +10,29 @@ namespace AppBundle\EventListener;
 
 use AppBundle\Entity\User;
 use AppBundle\FileUploader;
+use Doctrine\Common\EventSubscriber;
 use Doctrine\ORM\Event\LifecycleEventArgs;
 use Doctrine\ORM\Event\PreUpdateEventArgs;
-use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
-class AvatarUploadListener
+class AvatarUploadSubscriber implements EventSubscriber
 {
     private $uploader;
 
     public function __construct(FileUploader $uploader)
     {
         $this->uploader = $uploader;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getSubscribedEvents()
+    {
+        return [
+            'prePersist',
+            'preUpdate',
+        ];
     }
 
     public function prePersist(LifecycleEventArgs $args)
