@@ -22,16 +22,23 @@ class User extends BaseUser
     /**
      * @ORM\Column(type="string", length=255)
      *
-     * @Assert\NotBlank(message="Please enter your name.", groups={"Registration", "Profile"})
+     * @Assert\NotBlank(message="Пожалуйста, введите Ваше имя.", groups={"Registration", "Profile"})
      * @Assert\Length(
-     *     min=3,
+     *     min=2,
      *     max=255,
-     *     minMessage="The name is too short.",
-     *     maxMessage="The name is too long.",
+     *     minMessage="Имя слишком короткое.",
+     *     maxMessage="Имя слишком длинное.",
      *     groups={"Registration", "Profile"}
      * )
      */
     protected $name;
+
+    /**
+     * @ORM\Column(type="text")
+     *
+     * @Assert\NotBlank(message="Пожалуйста, введите Ваши контактные данные.", groups={"Registration", "Profile"})
+     */
+    protected $contactDetails;
 
     /**
      * Set name
@@ -67,5 +74,29 @@ class User extends BaseUser
         $this->setUsername($email);
 
         return $this;
+    }
+
+    /**
+     * Set contact details
+     *
+     * @param string $contactDetails
+     *
+     * @return User
+     */
+    public function setContactDetails($contactDetails)
+    {
+        $this->contactDetails = $contactDetails;
+
+        return $this;
+    }
+
+    /**
+     * Get contact details
+     *
+     * @return string
+     */
+    public function getContactDetails()
+    {
+        return $this->contactDetails;
     }
 }
