@@ -8,6 +8,7 @@ imports:
 parameters:
     locale: ru
     avatar_directory: '%kernel.root_dir%/../web/uploads/avatars'
+    lot_image_directory: '%kernel.root_dir%/../web/uploads/lots'
 
 framework:
     #esi: ~

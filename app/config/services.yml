@@ -10,10 +10,19 @@ services:
         class: AppBundle\FileUploader
         arguments: ['%avatar_directory%']
 
+    app.lot_image_uploader:
+            class: AppBundle\FileUploader
+            arguments: ['%lot_image_directory%']
 
     app.doctrine_avatar_listener:
         class: AppBundle\EventListener\AvatarUploadSubscriber
         arguments: ['@app.avatar_uploader']
+        tags:
+            - { name: doctrine.event_subscriber}
+
+    app.doctrine_lot_image_listener:
+        class: AppBundle\EventListener\LotImageUploadSubscriber
+        arguments: ['@app.lot_image_uploader']
         tags:
             - { name: doctrine.event_subscriber}
 
