@@ -2,6 +2,8 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Lot;
+use AppBundle\Form\LotType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -34,7 +36,14 @@ class DefaultController extends Controller
      */
     public function lotAddAction(Request $request)
     {
-        return $this->render('default/lot_add.html.twig');
+        $lot = new Lot();
+
+        $form = $this->createForm(LotType::class, $lot);
+
+        return $this->render(
+            'default/lot_add.html.twig',
+            ['form' => $form->createView()]
+        );
     }
 
     /**
