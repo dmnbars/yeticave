@@ -2,7 +2,9 @@
 
 namespace AppBundle\Form;
 
+use AppBundle\Entity\Category;
 use AppBundle\Entity\Lot;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
@@ -15,7 +17,16 @@ class LotType extends AbstractType
     {
         $builder
             ->add('name', null, ['label' => 'Наименование'])
-//            ->add('category')
+            ->add(
+                'category',
+                EntityType::class,
+                [
+                    'placeholder' => 'Выберите категорию',
+                    'class' => Category::class,
+                    'choice_label' => 'name',
+                    'label' => 'Категория'
+                ]
+            )
             ->add('description', null, ['label' => 'Описание'])
             ->add('image', FileType::class, ['label' => 'Изображение'])
             ->add('startPrice', null, ['label' => 'Начальная цена'])
