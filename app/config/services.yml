@@ -11,8 +11,8 @@ services:
         arguments: ['%avatar_directory%']
 
     app.lot_image_uploader:
-            class: AppBundle\FileUploader
-            arguments: ['%lot_image_directory%']
+        class: AppBundle\FileUploader
+        arguments: ['%lot_image_directory%']
 
     app.doctrine_avatar_listener:
         class: AppBundle\EventListener\AvatarUploadSubscriber
