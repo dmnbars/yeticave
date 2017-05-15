@@ -24,11 +24,15 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/lot", name="lot_detail")
+     * @Route("/lot/{id}", name="lot_detail", requirements={"id" = "\d+"})
+     *
+     * @param Request $request
+     * @param Lot $lot
+     * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function lotAction(Request $request)
+    public function lotAction(Request $request, Lot $lot)
     {
-        return $this->render('default/lot.html.twig');
+        return $this->render('default/lot.html.twig', ['lot' => $lot]);
     }
 
     /**
@@ -51,7 +55,8 @@ class DefaultController extends Controller
             $em->flush();
 
             return $this->redirect($this->generateUrl(
-                'lot_detail'
+                'lot_detail',
+                ['id' => $lot->getId()]
             ));
         }
 
