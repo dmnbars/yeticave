@@ -17,6 +17,7 @@ class BetRepository extends EntityRepository
                   ORDER BY b.dateCreate DESC'
             )
             ->setParameter('lot', $lot)
+            ->setLifetime(10)
             ->getResult();
     }
 }
