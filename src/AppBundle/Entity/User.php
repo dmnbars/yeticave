@@ -59,6 +59,11 @@ class User extends BaseUser
     private $win_lots;
 
     /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Bet", mappedBy="user")
+     */
+    private $bets;
+
+    /**
      * Set name
      *
      * @param string $name
@@ -208,5 +213,39 @@ class User extends BaseUser
     public function getWinLots()
     {
         return $this->win_lots;
+    }
+
+    /**
+     * Add bet
+     *
+     * @param \AppBundle\Entity\Bet $bet
+     *
+     * @return User
+     */
+    public function addBet(\AppBundle\Entity\Bet $bet)
+    {
+        $this->bets[] = $bet;
+
+        return $this;
+    }
+
+    /**
+     * Remove bet
+     *
+     * @param \AppBundle\Entity\Bet $bet
+     */
+    public function removeBet(\AppBundle\Entity\Bet $bet)
+    {
+        $this->bets->removeElement($bet);
+    }
+
+    /**
+     * Get bets
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getBets()
+    {
+        return $this->bets;
     }
 }

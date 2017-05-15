@@ -88,6 +88,11 @@ class Lot
      */
     private $category;
 
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Bet", mappedBy="lot")
+     */
+    private $bets;
+
 
     /**
      * Get id
@@ -347,5 +352,46 @@ class Lot
         $diff = $now->diff($end);
 
         return $diff;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->bets = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add bet
+     *
+     * @param \AppBundle\Entity\Bet $bet
+     *
+     * @return Lot
+     */
+    public function addBet(\AppBundle\Entity\Bet $bet)
+    {
+        $this->bets[] = $bet;
+
+        return $this;
+    }
+
+    /**
+     * Remove bet
+     *
+     * @param \AppBundle\Entity\Bet $bet
+     */
+    public function removeBet(\AppBundle\Entity\Bet $bet)
+    {
+        $this->bets->removeElement($bet);
+    }
+
+    /**
+     * Get bets
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getBets()
+    {
+        return $this->bets;
     }
 }
