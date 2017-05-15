@@ -1,0 +1,14 @@
+{% if bets|length > 0 %}
+    <div class="history">
+        <h3>История ставок (<span>{{ bets|length }}</span>)</h3>
+        <table class="history__list">
+            {% for bet in bets %}
+                <tr class="history__item">
+                    <td class="history__name">{{ bet.user.name }}</td>
+                    <td class="history__price">{{ bet.amount }} р</td>
+                    <td class="history__time">5 минут назад</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+{% endif %}

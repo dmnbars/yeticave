@@ -24,9 +24,9 @@ class Bet
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="created_date", type="datetime")
+     * @ORM\Column(name="date_create", type="datetime")
      */
-    private $createdDate;
+    private $dateCreate;
 
     /**
      * @var float
@@ -58,27 +58,27 @@ class Bet
     }
 
     /**
-     * Set createdDate
+     * Set dateCreate
      *
-     * @param \DateTime $createdDate
+     * @param \DateTime $dateCreate
      *
      * @return Bet
      */
-    public function setCreatedDate($createdDate)
+    public function setCreatedDate($dateCreate)
     {
-        $this->createdDate = $createdDate;
+        $this->dateCreate = $dateCreate;
 
         return $this;
     }
 
     /**
-     * Get createdDate
+     * Get dateCreate
      *
      * @return \DateTime
      */
     public function getCreatedDate()
     {
-        return $this->createdDate;
+        return $this->dateCreate;
     }
 
     /**
