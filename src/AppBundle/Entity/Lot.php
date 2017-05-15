@@ -338,4 +338,14 @@ class Lot
     {
         return $this->category;
     }
+
+    public function getTimeLeft()
+    {
+        $now = new \DateTime();
+        $end = $this->getDateComplete();
+
+        $diff = $now->diff($end);
+
+        return $diff;
+    }
 }

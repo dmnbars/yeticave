@@ -13,8 +13,12 @@
             </div>
             <div class="lot-item__right">
                 <div class="lot-item__state">
-                    <div class="lot-item__timer timer">
-                        10:54:12
+                    <div class="lot-item__timer timer{{ lot.timeLeft.days < 1 ? ' timer--finishing' }}">
+                        {% if lot.timeLeft.days > 0 %}
+                            {{ lot.timeLeft.format('%a:%H:%I:%S') }}
+                        {% else %}
+                            {{ lot.timeLeft.format('%H:%I:%S') }}
+                        {% endif %}
                     </div>
                     <div class="lot-item__cost-state">
                         <div class="lot-item__rate">

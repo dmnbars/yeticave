@@ -76,7 +76,9 @@ class DefaultController extends Controller
      */
     public function categoryAction(Request $request)
     {
-        return $this->render('default/category.html.twig');
+        $lots = $this->getDoctrine()->getRepository('AppBundle:Lot')->findLatestOrderedByCreateDate();
+
+        return $this->render('default/category.html.twig', ['lots' => $lots]);
     }
 
     public function categoryMenuAction()

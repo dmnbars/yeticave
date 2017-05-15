@@ -33,10 +33,14 @@
                         <div class="lot__state">
                             <div class="lot__rate">
                                 <span class="lot__amount">Стартовая цена</span>
-                                <span class="lot__cost">10 999<b class="rub">р</b></span>
+                                <span class="lot__cost">{{ lot.startPrice }}<b class="rub">р</b></span>
                             </div>
-                            <div class="lot__timer timer">
-                                16:54:12
+                            <div class="lot__timer timer{{ lot.timeLeft.days < 1 ? ' timer--finishing' }}">
+                                {% if lot.timeLeft.days > 0 %}
+                                    {{ lot.timeLeft.format('%a:%H:%I:%S') }}
+                                {% else %}
+                                    {{ lot.timeLeft.format('%H:%I:%S') }}
+                                {% endif %}
                             </div>
                         </div>
                     </div>
