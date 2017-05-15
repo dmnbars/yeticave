@@ -17,9 +17,14 @@ class DefaultController extends Controller
     {
         $categories = $this->getDoctrine()->getRepository('AppBundle:Category')->findAll();
 
+        $lots = $this->getDoctrine()->getRepository('AppBundle:Lot')->findLatestOrderedByCreateDate();
+
         return $this->render(
             'default/index.html.twig',
-            ['categories' => $categories]
+            [
+                'categories' => $categories,
+                'lots' =>$lots,
+            ]
         );
     }
 
