@@ -1,0 +1,9 @@
+{{ form_start(form, {'method': 'post', 'action': path('bet_add', {'lot_id': lot.id}), 'attr': {'class': 'lot-item__form' ~ (not form.vars.valid ? ' form--invalid')}}) }}
+    <p class="lot-item__form-item{{ not form.amount.vars.valid ? ' form__item--invalid'}}">
+        {{ form_label(form.amount) }}
+        {{- form_widget(form.amount) -}}
+        <span class="form__error">{{- form_errors(form.amount) -}}</span>
+    </p>
+    {{ form_rest(form) }}
+    <button type="submit" class="button">Сделать ставку</button>
+{{ form_end(form) }}

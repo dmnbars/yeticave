@@ -5,6 +5,7 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Lot;
 use AppBundle\Form\LotType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -41,7 +42,11 @@ class DefaultController extends Controller
     }
 
     /**
+     * @Security("has_role('ROLE_USER')")
      * @Route("/lot/add", name="lot_add")
+     *
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function lotAddAction(Request $request)
     {
