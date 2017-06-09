@@ -17,7 +17,8 @@ class BetController extends Controller
     public function listAction(Lot $lot)
     {
         $bets = $this->getDoctrine()
-            ->getRepository('AppBundle:Bet')->findByLotOrderedByCreateDate($lot);
+            ->getRepository(Bet::class)
+            ->findByLotOrderedByCreateDate($lot);
 
         return $this->render('default/_bets_list.html.twig', ['bets' => $bets]);
     }

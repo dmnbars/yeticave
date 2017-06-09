@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Category;
 use AppBundle\Entity\Lot;
 use AppBundle\Form\LotType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -16,9 +17,9 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
-        $categories = $this->getDoctrine()->getRepository('AppBundle:Category')->findAll();
+        $categories = $this->getDoctrine()->getRepository(Category::class)->findAll();
 
-        $lots = $this->getDoctrine()->getRepository('AppBundle:Lot')->findLatestOrderedByCreateDate();
+        $lots = $this->getDoctrine()->getRepository(Lot::class)->findLatestOrderedByCreateDate();
 
         return $this->render(
             'default/index.html.twig',
