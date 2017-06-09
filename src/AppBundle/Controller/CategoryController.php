@@ -21,9 +21,9 @@ class CategoryController extends Controller
      */
     public function indexAction(Request $request, Category $category)
     {
-        $lots = $this->getDoctrine()
-            ->getRepository(Lot::class)
-            ->findByCategory($category);
+        $page = $request->query->getInt('page', 1);
+
+        $lots = $this->getDoctrine()->getRepository(Lot::class)->findByCategory($category, $page);
 
         return $this->render(
             'default/category.html.twig',

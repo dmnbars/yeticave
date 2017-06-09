@@ -12,6 +12,8 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Category
 {
+    const NUM_ITEMS = 1;
+
     /**
      * @var int
      *
