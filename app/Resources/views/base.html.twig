@@ -48,7 +48,7 @@
 
         <main class="{% block main_class %}{% endblock %}">
             {% block category_menu %}
-                {{ render(controller('AppBundle:Default:categoryMenu')) }}
+                {{ render(controller('AppBundle:Category:menu')) }}
             {% endblock %}
             {% block main %}
             {% endblock %}
@@ -56,7 +56,7 @@
 
         {% block footer %}
             <footer class="main-footer">
-                {{ render(controller('AppBundle:Default:categoryMenu')) }}
+                {{ render(controller('AppBundle:Category:menu')) }}
                 <div class="main-footer__bottom container">
                     <div class="main-footer__copyright">
                         <p>© 2017, YetiCave</p>

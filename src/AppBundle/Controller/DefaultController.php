@@ -24,7 +24,7 @@ class DefaultController extends Controller
             'default/index.html.twig',
             [
                 'categories' => $categories,
-                'lots' =>$lots,
+                'lots' => $lots,
             ]
         );
     }
@@ -74,22 +74,5 @@ class DefaultController extends Controller
             'default/lot_add.html.twig',
             ['form' => $form->createView()]
         );
-    }
-
-    /**
-     * @Route("/category", name="lot_category")
-     */
-    public function categoryAction(Request $request)
-    {
-        $lots = $this->getDoctrine()->getRepository('AppBundle:Lot')->findLatestOrderedByCreateDate();
-
-        return $this->render('default/category.html.twig', ['lots' => $lots]);
-    }
-
-    public function categoryMenuAction()
-    {
-        $categories = $this->getDoctrine()->getRepository('AppBundle:Category')->findAll();
-
-        return $this->render('default/_category_menu.html.twig', ['categories' => $categories]);
     }
 }
