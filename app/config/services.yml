@@ -31,3 +31,13 @@ services:
         arguments: ['@router']
         tags:
             - { name: kernel.event_subscriber }
+
+    acme_app.template.my_template:
+        class: AppBundle\Template\MyCustomTemplate
+
+    pagerfanta.view.my_template:
+        class: Pagerfanta\View\DefaultView
+        public: false
+        arguments:
+            - "@acme_app.template.my_template"
+        tags: [{ name: pagerfanta.view, alias: my_template }]

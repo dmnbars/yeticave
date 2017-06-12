@@ -688,16 +688,19 @@ h2 {
   margin-right: 5px;
 }
 
-.pagination-item a {
+.pagination-item a,
+.pagination-item span {
   color: #879296;
   padding: 5px 10px;
 }
 
-.pagination-item a:hover {
+.pagination-item a:hover,
+.pagination-item span:hover {
   color: #45abde;
 }
 
-.pagination-item a:active {
+.pagination-item a:active,
+.pagination-item span:active {
   color: #2590c6;
 }
 
@@ -710,16 +713,16 @@ h2 {
   margin-right: 0;
 }
 
-.pagination-item-active a {
+.pagination-item-active span {
   color: #25434e;
   background-color: rgba(135, 146, 150, 0.1);
 }
 
-.pagination-item-active a:hover {
+.pagination-item-active span:hover {
   color: #25434e;
 }
 
-.pagination-item-active a:active {
+.pagination-item-active span:active {
   color: #25434e;
 }
 
