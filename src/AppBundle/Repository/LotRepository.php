@@ -3,6 +3,7 @@
 namespace AppBundle\Repository;
 
 use AppBundle\Entity\Category;
+use AppBundle\Entity\Lot;
 use Doctrine\ORM\EntityRepository;
 use Pagerfanta\Adapter\DoctrineORMAdapter;
 use Pagerfanta\Pagerfanta;
@@ -29,7 +30,7 @@ class LotRepository extends EntityRepository
     public function findByCategory(Category $category, $page = 1)
     {
         $pagerfanta = new Pagerfanta(new DoctrineORMAdapter($this->queryByCategory($category), false));
-        $pagerfanta->setMaxPerPage(Category::NUM_ITEMS);
+        $pagerfanta->setMaxPerPage(Lot::NUM_ITEMS);
         $pagerfanta->setCurrentPage($page);
 
         return $pagerfanta;

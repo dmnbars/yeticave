@@ -12,6 +12,8 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Lot
 {
+    const NUM_ITEMS = 12;
+
     /**
      * @var int
      *
