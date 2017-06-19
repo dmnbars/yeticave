@@ -1,0 +1,28 @@
+{% extends 'knp_menu.html.twig' %}
+
+{% block list %}
+    {% if item.hasChildren and options.depth is not same as(0) and item.displayChildren %}
+        <nav class="nav">
+            <ul class="nav__list container">
+                {{ block('children') }}
+            </ul>
+        </nav>
+    {% endif %}
+{% endblock %}
+
+{% block item %}
+    {% if item.displayed %}
+        {%- set classes = ['nav__item'] %}
+        {%- if matcher.isCurrent(item) %}
+            {%- set classes = classes|merge(['nav__item--current']) %}
+        {%- endif %}
+
+        <li class="{{ classes|join(' ') }}">
+            {%- if item.uri is not empty and (not matcher.isCurrent(item) or options.currentAsLink) %}
+                {{ block('linkElement') }}
+            {%- else %}
+                {{ block('spanElement') }}
+            {%- endif %}
+        </li>
+    {% endif %}
+{% endblock %}

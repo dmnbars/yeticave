@@ -1,0 +1,27 @@
+{% extends 'knp_menu.html.twig' %}
+
+{% block list %}
+    {% if item.hasChildren and options.depth is not same as(0) and item.displayChildren %}
+        <ul class="promo__list">
+            {{ block('children') }}
+        </ul>
+    {% endif %}
+{% endblock %}
+
+{% block item %}
+    {% if item.displayed %}
+        {%- set classes = ['promo__item promo__item--' ~ item.attributes.slug] %}
+
+        <li class="{{ classes|join(' ') }}">
+            {%- if item.uri is not empty and (not matcher.isCurrent(item) or options.currentAsLink) %}
+                {{ block('linkElement') }}
+            {%- else %}
+                {{ block('spanElement') }}
+            {%- endif %}
+        </li>
+    {% endif %}
+{% endblock %}
+
+{% block linkElement %}
+    <a class="promo__link" href="{{ item.uri }}">{{ block('label') }}</a>
+{% endblock %}

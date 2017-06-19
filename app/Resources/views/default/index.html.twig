@@ -7,7 +7,7 @@
     <section class="promo">
         <h2 class="promo__title">Нужен стафф для катки?</h2>
         <p class="promo__text">На нашем интернет-аукционе ты найдёшь самое эксклюзивное сноубордическое и горнолыжное снаряжение.</p>
-        {% include 'default/_category_index.html.twig' with {'categories': categories} only %}
+        {{ knp_menu_render('category', {'template': 'default/_index_menu.html.twig'}) }}
     </section>
     <section class="lots">
         <div class="lots__header">

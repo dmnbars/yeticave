@@ -18,6 +18,7 @@ class AppKernel extends Kernel
             new AppBundle\AppBundle(),
             new \FOS\UserBundle\FOSUserBundle(),
             new WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle(),
+            new \Knp\Bundle\MenuBundle\KnpMenuBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

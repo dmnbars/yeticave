@@ -41,3 +41,9 @@ services:
         arguments:
             - "@acme_app.template.my_template"
         tags: [{ name: pagerfanta.view, alias: my_template }]
+
+    app.menu_builder:
+        class: AppBundle\Menu\MenuBuilder
+        arguments: ["@knp_menu.factory", "@doctrine.orm.entity_manager"]
+        tags:
+            - { name: knp_menu.menu_builder, method: createCatalogMenu, alias: category}
